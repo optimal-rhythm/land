@@ -53,17 +53,6 @@ public class BLATest {
     assertEquals(0, fertileAreas.size());
     
     bla = new BLA();
-    br = new String[]{"0 0 0 599", "2 0 2 599", "3 2 399 3", "5 0 5 1", "10 4 12 599"};
-    bla.setBarrenRegions(br);
-    fertileAreas = bla.computeFertileRegions();
-    assertEquals(5, fertileAreas.size());
-    assertEquals(4, fertileAreas.get(0).intValue());
-    assertEquals(600, fertileAreas.get(1).intValue());
-    assertEquals(788, fertileAreas.get(2).intValue());
-    assertEquals(4172, fertileAreas.get(3).intValue());
-    assertEquals(230652, fertileAreas.get(4).intValue());
-
-    bla = new BLA();
     br = new String[]{"0 0 1 1"};
     bla.setBarrenRegions(br);
     fertileAreas = bla.computeFertileRegions();
@@ -78,12 +67,12 @@ public class BLATest {
     assertEquals(239400, fertileAreas.get(0).intValue());
 
     bla = new BLA();
-    br = new String[]{"0 0 0 599", "2 0 2 599"};
+    br = new String[]{"0 0 1 599", "5 0 5 599"};
     bla.setBarrenRegions(br);
     fertileAreas = bla.computeFertileRegions();
     assertEquals(2, fertileAreas.size());
-    assertEquals(600, fertileAreas.get(0).intValue());
-    assertEquals(238200, fertileAreas.get(1).intValue());
+    assertEquals(1800, fertileAreas.get(0).intValue());
+    assertEquals(236400, fertileAreas.get(1).intValue());
 
     bla = new BLA();
     br = new String[]{"0 0 0 599", "0 0 399 0", "399 0 399 599", "0 599 399 599"};
@@ -91,6 +80,17 @@ public class BLATest {
     fertileAreas = bla.computeFertileRegions();
     assertEquals(1, fertileAreas.size());
     assertEquals(238004, fertileAreas.get(0).intValue());
+
+    bla = new BLA();
+    br = new String[]{"10 5 10 599", "2 0 2 599", "3 3 399 3", "5 10 5 15", "10 4 20 599"};
+    bla.setBarrenRegions(br);
+    fertileAreas = bla.computeFertileRegions();
+    System.out.println(fertileAreas);
+    assertEquals(4, fertileAreas.size());
+    assertEquals(1191, fertileAreas.get(0).intValue());
+    assertEquals(1200, fertileAreas.get(1).intValue());
+    assertEquals(4166, fertileAreas.get(2).intValue());
+    assertEquals(225884, fertileAreas.get(3).intValue());
   }
   
   @Test
